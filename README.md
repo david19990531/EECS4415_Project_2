@@ -1,1 +1,1 @@
-# EECS4415_Assignment_2
+# EECS4415_Project_2
