@@ -9,7 +9,7 @@
 This project involves performing distributed analytics on a large-scale dataset using Python on a Hadoop cluster. The dataset is a subset of Yelp's businesses, reviews, and user data. It was originally put together for the Yelp Dataset Challenge, which is a chance for students to conduct research or analysis on Yelp's data and share their discoveries. The dataset consists of five JSON files, which contain information about businesses across 8 metropolitan areas in the USA and Canada.
 The dataset can be found and downloaded [here](https://www.kaggle.com/yelp-dataset/yelp-dataset/version/3) (registration to Kaggle is required).
 
-There are four questions in this project. You will write four sets of Python scripts that implement four MapReduce algorithms. The first set of scripts constructs an inverted index of the business categories; the second set computes frequency distributions about users; the third set finds top-K records; the fourth set analyzes the relationships between checkins and businesses.
+There are four questions in this project. You will write four sets of Python scripts that implement four MapReduce algorithms. The first set of scripts constructs an inverted index of the business categories; the second set computes frequency distributions about users; the third set finds top-K records; the fourth set analyzes the relationships between check-ins and businesses.
 
 ## Implementation
 * Clone this repository and implement your solution in each corresponding file. 
@@ -27,7 +27,7 @@ There are four questions in this project. You will write four sets of Python scr
 Important notes:
 * You should strictly follow the implementation instructions, the input/output format, and the filename. Implementations that do not follow the correct format will be marked as 0.
 * You may NOT change the filename of the Python scripts and the output files (if any).
-* The time limit for each set of scripts (MapReduce algorithm) is 360 seconds. If your script goes beyond the time limit, it will be interrupted and marked as 0.
+* The time limit for each set of scripts (MapReduce algorithm) is 360 seconds. If your script goes beyond the time limit, it will be terminated and marked as 0.
 * To get full marks, your code must be well-commented.
 
 
@@ -58,7 +58,7 @@ Your scripts will be executed in a Hadoop cluster (Apache Hadoop 3.3.1). An auto
 
 
 ## Q1. Distributed Construction of the Inverted Index (25%)
-In information retrieval, an inverted index is an index data structure that stores a mapping from words to a collection of documents that they appear in. Your task is to build an inverted index that maps categories (of businesses) to businesses. In other words, given a collection of businesses, an inverted index is a dictionary where each category is associated with a list of the business ids that belong to that category. See the example below:
+In information retrieval, an inverted index is an index data structure that stores a mapping from words to a collection of documents that they appear in. Your task is to build an inverted index that maps categories (of businesses) to businesses. In other words, given a collection of businesses, an inverted index is a dictionary where each category is associated with a list of the business ids (comma-separated) that belong to that category. See the example below:
 
 ![Inverted index](Q1.png)
 
@@ -86,7 +86,7 @@ $ yarn jar /opt/hadoop/share/hadoop/tools/lib/hadoop-streaming-3.3.1.jar -files 
 The original file provided by Kaggle ([*yelp_academic_dataset_business.json*](https://www.kaggle.com/yelp-dataset/yelp-dataset/version/3?select=yelp_academic_dataset_business.json)) will be used for evaluation.
 
 ## Q2. Distributed Computation of Frequencies (25%)
-In this question, your task is to write two Python scripts (***q2mapper.py*** and ***q2reducer.py***) that implement a MapReduce algorithm for computing frequencies. For a given collection of Yelp user data ([*yelp_academic_dataset_user.json*](https://www.kaggle.com/yelp-dataset/yelp-dataset/version/3?select=yelp_academic_dataset_user.json)), the algorithm computes the percent proportion of Yelp accounts created in each month (irrespective of the year). For example, the input dataset contains four users who joined Yelp on 2010-01-01, 2011-02-01, 2018-03-01, 2018-04-01, respectively. In this case, the percent proportions should be 25% for January, 25% for February, 25% for March, 25% for April, and 0% for the other months. The output of the MapReduce job should be one line per pair of values separated by **a tab character** (\t) as follows:
+In this question, your task is to write two Python scripts (***q2mapper.py*** and ***q2reducer.py***) that implement a MapReduce algorithm for computing frequencies. For a given collection of Yelp user data ([*yelp_academic_dataset_user.json*](https://www.kaggle.com/yelp-dataset/yelp-dataset/version/3?select=yelp_academic_dataset_user.json)), the algorithm computes the percent proportion of Yelp accounts created in each month (irrespective of the year). For example, the input dataset contains four users who joined Yelp on 2010-01-01, 2011-02-01, 2018-03-01, and 2018-04-01, respectively. In this case, the percent proportions should be 25% for January, 25% for February, 25% for March, 25% for April, and 0% for the other months. The output of the MapReduce job should be one line per pair of values separated by **a tab character** (\t) as follows:
 ```
 month(integer)	proportion%
 ```
@@ -119,7 +119,7 @@ The original file provided by Kaggle ([*yelp_academic_dataset_user.json*](https:
 
 
 ## Q3. Distributed Computation of the Top-k Reviews
-Yelp users can vote a review as useful, funny, or cool (UFC). The total number of UFC votes of a review is the sum of useful, funny, and cool votes it has received. For example, a review has received 10 useful votes, 20 funny votes, and 30 cool votes. In this case, the total number of UFC votes is 60. For a given collection of Yelp review data ([*yelp_academic_dataset_review.json*](https://www.kaggle.com/yelp-dataset/yelp-dataset/version/3?select=yelp_academic_dataset_review.json)), your task is to write two Python scripts (***q3mapper.py*** and ***q3reducer.py***) that implement a MapReduce algorithm to find the **top 4415** reviews with the most UFC votes in descending order (from the most UFC votes to the least). The output of the MapReduce job should be one line per pair of values separated by **a tab character** (\t) as follows:
+Yelp users can vote a review as useful, funny, or cool (UFC). The total number of UFC votes of a review is the sum of useful, funny, and cool votes it has received. For example, a review has received 10 useful votes, 20 funny votes, and 30 cool votes. In this case, the total number of UFC votes is 60 for this review. For a given collection of Yelp review data ([*yelp_academic_dataset_review.json*](https://www.kaggle.com/yelp-dataset/yelp-dataset/version/3?select=yelp_academic_dataset_review.json)), your task is to write two Python scripts (***q3mapper.py*** and ***q3reducer.py***) that implement a MapReduce algorithm to find the **top 4415** reviews with the most UFC votes in descending order (from the most UFC votes to the least). The output of the MapReduce job should be one line per pair of values separated by **a tab character** (\t) as follows:
 ```
 review_id	#UFC_votes
 ```
