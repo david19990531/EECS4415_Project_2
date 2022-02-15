@@ -118,7 +118,7 @@ $ yarn jar /opt/hadoop/share/hadoop/tools/lib/hadoop-streaming-3.3.1.jar -files 
 The original file provided by Kaggle ([*yelp_academic_dataset_user.json*](https://www.kaggle.com/yelp-dataset/yelp-dataset/version/3?select=yelp_academic_dataset_user.json)) will be used for evaluation.
 
 
-## Q3. Distributed Computation of the Top-k Reviews
+## Q3. Distributed Computation of the Top-k Reviews (25%)
 Yelp users can vote a review as useful, funny, or cool (UFC). The total number of UFC votes of a review is the sum of useful, funny, and cool votes it has received. For example, a review has received 10 useful votes, 20 funny votes, and 30 cool votes. In this case, the total number of UFC votes is 60 for this review. For a given collection of Yelp review data ([*yelp_academic_dataset_review.json*](https://www.kaggle.com/yelp-dataset/yelp-dataset/version/3?select=yelp_academic_dataset_review.json)), your task is to write two Python scripts (***q3mapper.py*** and ***q3reducer.py***) that implement a MapReduce algorithm to find the **top 4415** reviews with the most UFC votes in descending order (from the most UFC votes to the least). The output of the MapReduce job should be one line per pair of values separated by **a tab character** (\t) as follows:
 ```
 review_id	#UFC_votes
@@ -145,7 +145,7 @@ $ yarn jar /opt/hadoop/share/hadoop/tools/lib/hadoop-streaming-3.3.1.jar -files 
 ```
 The original file provided by Kaggle ([*yelp_academic_dataset_review.json*](https://www.kaggle.com/yelp-dataset/yelp-dataset/version/3?select=yelp_academic_dataset_review.json)) will be used for evaluation.
 
-## Q4. Distributed Generation of Checkin Logs
+## Q4. Distributed Generation of Checkin Logs (25%)
 The Yelp check-in data ([*yelp_academic_dataset_checkin.json*](https://www.kaggle.com/yelp-dataset/yelp-dataset/version/3?select=yelp_academic_dataset_checkin.json)) contains the information about check-ins on businesses, in which each line consists of a business ID and a comma-separated list of timestamps for each check-in. In this question, your task is to write two Python scripts (***q4mapper.py*** and ***q4reducer.py***) that implement a MapReduce algorithm to generate check-in logs in a distributed manner. Each line of the check-in logs should contain a unique identifier (UID), the timestamp of the check-in, and the name of the business. The order of the log does not matter. The UID should follow the same format as the Yelp dataset, which is a **random-generated unique string with 22 characters**. The valid characters to construct UID include: uppercase letters(A-Z), lowercase letters (a-z), numbers (0-9), underscore (_), and dash (-). The output of the MapReduce job should be one line per triplet (separated by **a tab character**) as follows:
 
 ```
