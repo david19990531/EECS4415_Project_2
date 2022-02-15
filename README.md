@@ -119,7 +119,7 @@ The original file provided by Kaggle ([*yelp_academic_dataset_user.json*](https:
 
 
 ## Q3. Distributed Computation of the Top-k Reviews (25%)
-Yelp users can vote a review as useful, funny, or cool (UFC). The total number of UFC votes of a review is the sum of useful, funny, and cool votes it has received. For example, a review has received 10 useful votes, 20 funny votes, and 30 cool votes. In this case, the total number of UFC votes is 60 for this review. For a given collection of Yelp review data ([*yelp_academic_dataset_review.json*](https://www.kaggle.com/yelp-dataset/yelp-dataset/version/3?select=yelp_academic_dataset_review.json)), your task is to write two Python scripts (***q3mapper.py*** and ***q3reducer.py***) that implement a MapReduce algorithm to find the **top 4415** reviews with the most UFC votes in descending order (from the most UFC votes to the least). The output of the MapReduce job should be one line per pair of values separated by **a tab character** (\t) as follows:
+Yelp users can vote a review as useful, funny, or cool (UFC). The total number of UFC votes of a review is the sum of useful, funny, and cool votes it has received. For example, a review has received 10 useful votes, 20 funny votes, and 30 cool votes. In this case, the total number of UFC votes is 60 for this review. For a given collection of Yelp review data ([*yelp_academic_dataset_review.json*](https://www.kaggle.com/yelp-dataset/yelp-dataset/version/3?select=yelp_academic_dataset_review.json)), your task is to write two Python scripts (***q3mapper.py*** and ***q3reducer.py***) that implement a MapReduce algorithm to find the **top 4415** reviews with the most UFC votes in descending order (from the most UFC votes to the least). If there are multiple reviews with the same number of UFC votes, they should be sorted in descending order according to the date created (from the most recently created to the least). The output of the MapReduce job should be one line per pair of values separated by **a tab character** (\t) as follows:
 ```
 review_id	#UFC_votes
 ```
@@ -132,8 +132,13 @@ DdG2x0EE7t1aKqSxEdummy	512
 EeG2x0CS7t1aKqSxEdummy	256
 FfG2x0447t1aKqSxEdummy	128
 GgG2x0157t1aKqSxEdummy	64
+HhG2x0157t1aKqSxEdummy	32
+IiG2x0157t1aKqSxEdummy	32
+JjG2x0157t1aKqSxEdummy	16
+KkG2x0157t1aKqSxEdummy	8
 ...
 ```
+In the example above, the reviews HhG2x0157t1aKqSxEdummy and IiG2x0157t1aKqSxEdummy have the same number of UFC votes. The review HhG2x0157t1aKqSxEdummy comes before IiG2x0157t1aKqSxEdummy because the review HhG2x0157t1aKqSxEdummy was created later than IiG2x0157t1aKqSxEdummy.
 
 Your script should be run as follows:
 ```
