@@ -12,7 +12,7 @@ The dataset can be found and downloaded [here](https://www.kaggle.com/yelp-datas
 There are four questions in this project. You will write four sets of Python scripts that implement four MapReduce algorithms. The first set of scripts constructs an inverted index of the business categories; the second set computes frequency distributions about users; the third set finds top-K records; the fourth set analyzes the relationships between check-ins and businesses.
 
 ## Implementation
-* Clone this repository and implement your solution in each corresponding file. 
+* Clone this repository and implement your solution in the corresponding file. 
 * The three lines in the *info.txt* file include information about you (first name, last name, and 9-digit student ID). Please update the *info.txt* file accordingly. For example, if your name is *Foo Bar* and your student ID is *123456789*. The *info.txt* file should be as follows:
     ```
     Foo
@@ -151,7 +151,7 @@ $ yarn jar /opt/hadoop/share/hadoop/tools/lib/hadoop-streaming-3.3.1.jar -files 
 The original file provided by Kaggle ([*yelp_academic_dataset_review.json*](https://www.kaggle.com/yelp-dataset/yelp-dataset/version/3?select=yelp_academic_dataset_review.json)) will be used for evaluation.
 
 ## Q4. Distributed Generation of Checkin Logs (25%)
-The Yelp check-in data ([*yelp_academic_dataset_checkin.json*](https://www.kaggle.com/yelp-dataset/yelp-dataset/version/3?select=yelp_academic_dataset_checkin.json)) contains the information about check-ins on businesses, in which each line consists of a business ID and a comma-separated list of timestamps for each check-in. In this question, your task is to write two Python scripts (***q4mapper.py*** and ***q4reducer.py***) that implement a MapReduce algorithm to generate check-in logs in a distributed manner. Each line of the check-in logs should contain a unique identifier (UID), the timestamp of the check-in, and the name of the business. The order of the log does not matter. The UID should follow the same format as the Yelp dataset, which is a **random-generated unique string with 22 characters**. The valid characters to construct UID include: uppercase letters(A-Z), lowercase letters (a-z), numbers (0-9), underscore (_), and dash (-). The output of the MapReduce job should be one line per triplet (separated by **a tab character**) as follows:
+The Yelp check-in data ([*yelp_academic_dataset_checkin.json*](https://www.kaggle.com/yelp-dataset/yelp-dataset/version/3?select=yelp_academic_dataset_checkin.json)) contains the information about check-ins on businesses, in which each line consists of a business ID and a comma-separated list of timestamps for each check-in. In this question, your task is to write two Python scripts (***q4mapper.py*** and ***q4reducer.py***) that implement a MapReduce algorithm to generate check-in logs in a distributed manner. Each line of the check-in logs should contain a unique identifier (UID), the timestamp of the check-in, and the name of the business. The order of the log does not matter. The UID should follow the same format as the Yelp dataset, which is a **random-generated unique string with 22 characters**. The valid characters to construct UID include: uppercase letters (A-Z), lowercase letters (a-z), numbers (0-9), underscore (_), and dash (-). The output of the MapReduce job should be one line per triplet (separated by **a tab character**) as follows:
 
 ```
 uid	timestamp	business_name
