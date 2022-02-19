@@ -30,6 +30,7 @@ Important notes:
 * The time limit for each set of scripts (MapReduce algorithm) is 360 seconds. If your script goes beyond the time limit, it will be terminated and marked as 0.
 * To get full marks, your code must be well-commented.
 
+**Hint:** It is highly recommended to test your implementations in the Docker-based Hadoop environment provided in [Lab3](https://eclass.yorku.ca/pluginfile.php/3465412/mod_folder/content/0/EECS4415-Tutorial3-HDFS.pdf) and [Lab4](https://eclass.yorku.ca/pluginfile.php/3482046/mod_folder/content/0/EECS4415-Tutorial4-MapReduce.pdf). We will use the same environment to evaluate your submission.
 
 ## Submission
 You need to zip your repository and submit as one zip file with the name of *project2.zip* on eClass by the due date. The directory structure in *project2.zip* should look like this:
