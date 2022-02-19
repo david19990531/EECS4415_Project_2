@@ -12,7 +12,7 @@ The dataset can be found and downloaded [here](https://www.kaggle.com/yelp-datas
 There are four questions in this project. You will write four sets of Python scripts that implement four MapReduce algorithms. The first set of scripts constructs an inverted index of the business categories; the second set computes frequency distributions about users; the third set finds top-K records; the fourth set analyzes the relationships between check-ins and businesses.
 
 ## Implementation
-* Clone this repository and implement your solution in the corresponding file. 
+* You may clone this repository and implement your solution in the corresponding files. 
 * The three lines in the *info.txt* file include information about you (first name, last name, and 9-digit student ID). Please update the *info.txt* file accordingly. For example, if your name is *Foo Bar* and your student ID is *123456789*. The *info.txt* file should be as follows:
     ```
     Foo
