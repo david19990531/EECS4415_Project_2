@@ -20,6 +20,7 @@ There are four questions in this project. You will write four sets of Python scr
     123456789
     ```
 * All scripts are to be written using Python >= 3.7.0.
+* You should use LF line terminators in your scripts.
 * You may NOT change the shebang line(`#!/usr/local/bin/python3.9`) of the Python scripts in your submission.
 * You may NOT use any third-party packages. Only [built-in Python libraries](https://docs.python.org/3.9/library/) are allowed.
 * You should round your answer to at most 2 decimal places (only if necessary) using the built-in [`round()`](https://docs.python.org/3/library/functions.html#round) function.
